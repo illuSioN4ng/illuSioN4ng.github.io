@@ -1,0 +1,859 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript,vue," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="illuSioN4ng's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="&amp;emsp;&amp;emsp;最近因为公司中台项目前端技术栈准备整体迁移到vue上，又开始对vue-cli进行了一次相对深入的研究，为项目搭建一个简单的前端开发框架，虽然目前需求的单页应用，不过还是对基于vue-cli的多页应用的配置进行了了解，这篇文章就是进行相关的总结：    vue-cli的变化&amp;emsp;&amp;emsp;在公司直接安装vue-cli并初始化vue项目的时候，就发现文档目录还是有些许变">
+<meta name="keywords" content="JavaScript,vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于vue-cli的多页配置">
+<meta property="og:url" content="http://illuSioN4ng.github.io/2018/01/08/vue-vuecli/index.html">
+<meta property="og:site_name" content="illuSioN4ng&#39;s Blog">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;最近因为公司中台项目前端技术栈准备整体迁移到vue上，又开始对vue-cli进行了一次相对深入的研究，为项目搭建一个简单的前端开发框架，虽然目前需求的单页应用，不过还是对基于vue-cli的多页应用的配置进行了了解，这篇文章就是进行相关的总结：    vue-cli的变化&amp;emsp;&amp;emsp;在公司直接安装vue-cli并初始化vue项目的时候，就发现文档目录还是有些许变">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/8c55dc23gy1fn8zj6462jj208e06idfs.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/8c55dc23gy1fn8zkcmz9mj209005mwef.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/8c55dc23gy1fn90jo14erj20ey04mmx8.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/8c55dc23gy1fn90k7tws1j20r904q0sv.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/8c55dc23gy1fn90xjgspjj20q507jdge.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/8c55dc23gy1fn90yjeqj1j20fc05lmxi.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/8c55dc23gy1fn910lmdyqj20w80b4751.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/8c55dc23gy1fn91ojm8bjj20v604st8y.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/8c55dc23gy1fn91otxqf5j20jh091t95.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/8c55dc23gy1fn952pr92pj20a80dlmxb.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/8c55dc23gy1fn9534vizsj20ah0gjt90.jpg">
+<meta property="og:updated_time" content="2018-01-20T09:11:41.671Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于vue-cli的多页配置">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;最近因为公司中台项目前端技术栈准备整体迁移到vue上，又开始对vue-cli进行了一次相对深入的研究，为项目搭建一个简单的前端开发框架，虽然目前需求的单页应用，不过还是对基于vue-cli的多页应用的配置进行了了解，这篇文章就是进行相关的总结：    vue-cli的变化&amp;emsp;&amp;emsp;在公司直接安装vue-cli并初始化vue项目的时候，就发现文档目录还是有些许变">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/8c55dc23gy1fn8zj6462jj208e06idfs.jpg">
+
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> 基于vue-cli的多页配置 | illuSioN4ng's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?73f680a7c65935b14b74cc6e5969222d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <a href="https://github.com/illuSioN4ng" class="github-corner"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">illuSioN4ng's Blog:每一个不曾起舞的日子都是对生命的辜负。</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+  </form>
+
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'kZzg9CPkZycoT9NtMrMY','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                基于vue-cli的多页配置
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2018-01-08T10:07:07+08:00" content="2018-01-08">
+              2018-01-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">vue</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2018/01/08/vue-vuecli/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/01/08/vue-vuecli/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>&emsp;&emsp;最近因为公司中台项目前端技术栈准备整体迁移到vue上，又开始对vue-cli进行了一次相对深入的研究，为项目搭建一个简单的前端开发框架，虽然目前需求的单页应用，不过还是对基于vue-cli的多页应用的配置进行了了解，这篇文章就是进行相关的总结：   </p>
+<h2 id="vue-cli的变化"><a href="#vue-cli的变化" class="headerlink" title="vue-cli的变化"></a>vue-cli的变化</h2><p>&emsp;&emsp;在公司直接安装vue-cli并初始化vue项目的时候，就发现文档目录还是有些许变化的，尤其是build文件夹里少了两个文件，由下面两个图可见：<br><strong>旧版的build文件夹</strong>：<br><img src="http://ww1.sinaimg.cn/large/8c55dc23gy1fn8zj6462jj208e06idfs.jpg" alt="旧版的build文件夹"><br><strong>新版的build文件夹(vue-cli@2.9.2)</strong>：<br><img src="http://ww1.sinaimg.cn/large/8c55dc23gy1fn8zkcmz9mj209005mwef.jpg" alt="新版的build文件夹"><br>&emsp;&emsp;我们知道dev-client.js和dev-server.js文件是之前webpack本地服务热重载hot-reloading，后来想到应该是版本升级之后webpack升级之后使用 <code>webpack-dev-server</code> 进行本地服务的构建了。<br>&emsp;&emsp;打开package.json文件来看：<br><strong>旧版 package.json</strong>:<br><img src="http://ww1.sinaimg.cn/large/8c55dc23gy1fn90jo14erj20ey04mmx8.jpg" alt="旧版 package.json"><br><strong>新版(vue-cli@2.9.2) package.json</strong>：<br><img src="http://ww1.sinaimg.cn/large/8c55dc23gy1fn90k7tws1j20r904q0sv.jpg" alt="新版(vue-cli@2.9.2) package.json"><br>&emsp;&emsp;一看便知，新版 <code>npm run dev</code> 启动的命令与旧版完全不一样了，这也就是为什么新版少了两个文件的原因，新版切换到 <code>webpack-dev-server</code> 来启动本地浏览器。<br>&emsp;&emsp;同时，新版本地服务 <code>npm start</code> 之后浏览器并没有自动打开，显然是配置被默认关闭了，我们改如何去找呢？<br>&emsp;&emsp;首先按照命令调用的js去看 <code>webpack.dev.conf.js</code>：<br><img src="http://ww1.sinaimg.cn/large/8c55dc23gy1fn90xjgspjj20q507jdge.jpg" alt="webpack.dev.conf.js"><br>&emsp;&emsp;这个config又是哪儿来的呢？<br><img src="http://ww1.sinaimg.cn/large/8c55dc23gy1fn90yjeqj1j20fc05lmxi.jpg" alt="webpack.dev.conf.js"><br>&emsp;&emsp;再去看 <code>config</code> 文件夹下的 <code>index.js</code> 文件：<br><img src="http://ww1.sinaimg.cn/large/8c55dc23gy1fn910lmdyqj20w80b4751.jpg" alt="config/index.js"><br>&emsp;&emsp;在这里把 <code>autoOpenBrowser</code> 置为 <code>true</code> 我们在去启动服务（命令行 <code>npm start</code>），这时候浏览器就会自动打开了。    </p>
+<h2 id="基于vue-cli的多页应用配置"><a href="#基于vue-cli的多页应用配置" class="headerlink" title="基于vue-cli的多页应用配置"></a>基于vue-cli的多页应用配置</h2><p>&emsp;&emsp;因为vue-cli默认的就是单页应用的配置，这里就不在赘述。下面详细说下，搭建的多页应用的过程。</p>
+<ol>
+<li><p>首先全局安装<a href="https://github.com/vuejs/vue-cli" target="_blank" rel="noopener">vue-cli</a>    </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i vue-cli -g</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建<a href="https://github.com/vuejs-templates" target="_blank" rel="noopener">项目模板</a>：官方提供了六个模板 <code>webpack</code> 、<code>pwa</code> 、 <code>webpack-simple</code> 、 <code>browserify</code> 、 <code>browserify-simple</code> 、 <code>simple</code> ，选择webpack模板    </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue init webpack &lt;project-name&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在安装过程中会有一些提示：</p>
+<ul>
+<li>Vue build这个选项选择Runtime + Compiler<br><img src="http://ww1.sinaimg.cn/large/8c55dc23gy1fn91ojm8bjj20v604st8y.jpg" alt="Runtime + Compiler"></li>
+<li>安装vue-router，ESLint、Karma+Mocha、Nightwatch根据需求选择安装<br><img src="http://ww1.sinaimg.cn/large/8c55dc23gy1fn91otxqf5j20jh091t95.jpg" alt="其他安装选项"></li>
+<li>安装好依赖之后，根据提示操作，即可成功启动项目    </li>
+</ul>
+</li>
+<li><p>现在创建的项目模板是单页面应用，与多页面应用还有些差别，需要做一些调整：</p>
+<ul>
+<li>项目目录结构调整<br><strong>单页目录</strong>：<br><img src="http://ww1.sinaimg.cn/large/8c55dc23gy1fn952pr92pj20a80dlmxb.jpg" alt="单页目录"><br><strong>多页目录</strong>：<br><img src="http://ww1.sinaimg.cn/large/8c55dc23gy1fn9534vizsj20ah0gjt90.jpg" alt="多页目录"><br>在开发路径src下增加modules和pages文件夹，分别存放模块和页面<br>有关页面的所有文件都放到同一文件夹下就近管理：<code>index.html</code>(页面模板)、<code>main.js</code>(页面入口文件)、<code>App.vue</code>(页面使用的组件，公用组件放到components文件夹下)都移到index文件夹下，并把<code>main.js</code>改为<code>index.js</code>,保证页面的入口js文件和模板文件的名称一致，同时，新建test文件夹（test页面）（多页应用不需要安装<code>vue-router</code>）    </li>
+<li><p>在build/utils.js中添加<code>entries</code>、<code>htmlPlugin</code>两个方法：webpack多入口文件和多页面输出    </p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> glob = <span class="built_in">require</span>(<span class="string">'glob'</span>)</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>)</span><br><span class="line"><span class="keyword">const</span> PAGE_PATH = path.resolve(__dirname, <span class="string">'../src/pages'</span>)</span><br><span class="line"><span class="keyword">const</span> merge = <span class="built_in">require</span>(<span class="string">'webpack-merge'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> config = <span class="built_in">require</span>(<span class="string">'../config'</span>)</span><br><span class="line"><span class="keyword">const</span> ExtractTextPlugin = <span class="built_in">require</span>(<span class="string">'extract-text-webpack-plugin'</span>)</span><br><span class="line"><span class="keyword">const</span> packageConfig = <span class="built_in">require</span>(<span class="string">'../package.json'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 多入口配置</span></span><br><span class="line">exports.entries = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> entryFiles = glob.sync(PAGE_PATH + <span class="string">'/*/*.js'</span>)</span><br><span class="line">  <span class="keyword">var</span> map = &#123;&#125;</span><br><span class="line">  entryFiles.forEach(<span class="function">(<span class="params">filePath</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> filename = filePath.substring(filePath.lastIndexOf(<span class="string">'/'</span>) + <span class="number">1</span>, filePath.lastIndexOf(<span class="string">'.'</span>))</span><br><span class="line">    map[filename] = filePath</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> map</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 多页面输出配置</span></span><br><span class="line">exports.htmlPlugin = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> entryHtml = glob.sync(PAGE_PATH + <span class="string">'/*/*.html'</span>)</span><br><span class="line">  <span class="keyword">let</span> arr = []</span><br><span class="line">  entryHtml.forEach(<span class="function">(<span class="params">filePath</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> filename = filePath.substring(filePath.lastIndexOf(<span class="string">'/'</span>) + <span class="number">1</span>, filePath.lastIndexOf(<span class="string">'.'</span>))</span><br><span class="line">    <span class="keyword">let</span> conf = &#123;</span><br><span class="line">      template: filePath,</span><br><span class="line">      filename: filename + <span class="string">'.html'</span>,</span><br><span class="line">      chunks: [ filename ],</span><br><span class="line">      inject: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">'production'</span>) &#123;</span><br><span class="line">      conf = merge(conf, &#123;</span><br><span class="line">        chunks: [ <span class="string">'manifest'</span>, <span class="string">'vendor'</span>, filename ], <span class="comment">//插件对页面入口文件(即js文件)的限定，如果不设置则会把整个项目下的所有入口文件全部引入</span></span><br><span class="line">        <span class="comment">// vendor模块是指提取涉及node_modules中的公共模块</span></span><br><span class="line">        <span class="comment">// manifest模块是对vendor模块做的缓存</span></span><br><span class="line">        minify: &#123;</span><br><span class="line">          removeComments: <span class="literal">true</span>,</span><br><span class="line">          collapseWhitespace: <span class="literal">true</span>,</span><br><span class="line">          removeAttributeQuotes: <span class="literal">true</span></span><br><span class="line">        &#125;,</span><br><span class="line">        chunksSortMode: <span class="string">'dependency'</span> <span class="comment">// 插件会按照模块的依赖关系依次加载，即：manifest，vendor，本页面入口，其他页面入口</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    arr.push(<span class="keyword">new</span> HtmlWebpackPlugin(conf))</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> arr</span><br><span class="line">&#125;</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改build/webpack.base.conf.js的入口配置</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  context: path.resolve(__dirname, <span class="string">'../'</span>),</span><br><span class="line">  <span class="comment">// entry: &#123;</span></span><br><span class="line">  <span class="comment">//   app: './src/main.js'</span></span><br><span class="line">  <span class="comment">// &#125;,</span></span><br><span class="line">  entry: utils.entries(),</span><br><span class="line">  ......</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改build/webpack.dev.conf.js和build/webpack.prod.conf.js的多页面配置：把原有的页面模板配置注释或删除，并把多页面配置添加到plugins<br><code>webpack.dev.conf.js</code>:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">    <span class="keyword">new</span> webpack.DefinePlugin(&#123;</span><br><span class="line">      <span class="string">'process.env'</span>: <span class="built_in">require</span>(<span class="string">'../config/dev.env'</span>)</span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="keyword">new</span> webpack.HotModuleReplacementPlugin(),</span><br><span class="line">    <span class="keyword">new</span> webpack.NamedModulesPlugin(), <span class="comment">// HMR shows correct file names in console on update.</span></span><br><span class="line">    <span class="keyword">new</span> webpack.NoEmitOnErrorsPlugin(),</span><br><span class="line">    <span class="comment">// https://github.com/ampedandwired/html-webpack-plugin</span></span><br><span class="line">    <span class="comment">// new HtmlWebpackPlugin(&#123;</span></span><br><span class="line">    <span class="comment">//   filename: 'index.html',</span></span><br><span class="line">    <span class="comment">//   template: 'index.html',</span></span><br><span class="line">    <span class="comment">//   inject: true</span></span><br><span class="line">    <span class="comment">// &#125;),</span></span><br><span class="line">    ...utils.htmlPlugin(),</span><br><span class="line">    </span><br><span class="line">    ......</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p><code>webpack.prod.conf.js</code>:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">......</span><br><span class="line">  <span class="comment">// generate dist index.html with correct asset hash for caching.</span></span><br><span class="line">  <span class="comment">// you can customize output by editing /index.html</span></span><br><span class="line">  <span class="comment">// see https://github.com/ampedandwired/html-webpack-plugin</span></span><br><span class="line">  <span class="comment">// new HtmlWebpackPlugin(&#123;</span></span><br><span class="line">  <span class="comment">//   filename: config.build.index,</span></span><br><span class="line">  <span class="comment">//   template: 'index.html',</span></span><br><span class="line">  <span class="comment">//   inject: true,</span></span><br><span class="line">  <span class="comment">//   minify: &#123;</span></span><br><span class="line">  <span class="comment">//     removeComments: true,</span></span><br><span class="line">  <span class="comment">//     collapseWhitespace: true,</span></span><br><span class="line">  <span class="comment">//     removeAttributeQuotes: true</span></span><br><span class="line">  <span class="comment">//     // more options:</span></span><br><span class="line">  <span class="comment">//     // https://github.com/kangax/html-minifier#options-quick-reference</span></span><br><span class="line">  <span class="comment">//   &#125;,</span></span><br><span class="line">  <span class="comment">//   // necessary to consistently work with multiple chunks via CommonsChunkPlugin</span></span><br><span class="line">  <span class="comment">//   chunksSortMode: 'dependency'</span></span><br><span class="line">  <span class="comment">// &#125;),</span></span><br><span class="line">  ...utils.htmlPlugin(),</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<p>&emsp;&emsp;至此，多页面应用已经搭建完毕，只需要在pages文件夹创建相应的页面文件即可，如输入 <code>loaclhost:8080/test.html</code> 即打开 <code>test</code> 文件夹对应的页面，以此类推。<br>&emsp;&emsp;当然，某些业务需求对于url可能需要定制，这时候就需要用到 <code>connect-history-api-fallback</code> api中的 <code>rewrites</code> (<a href="https://github.com/bripkens/connect-history-api-fallback#rewrites" target="_blank" rel="noopener">详情请点击</a>) 选项，如下图配置，就可以实现输入 <code>loaclhost:8080/test</code> 即打开 <code>test</code> 文件夹对应的页面,以及404页面:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">  clientLogLevel: <span class="string">'warning'</span>,</span><br><span class="line">  historyApiFallback: &#123;</span><br><span class="line">    <span class="comment">// index: '/test.html', //path.join(config.dev.assetsPublicPath, '/test.html')</span></span><br><span class="line">    <span class="comment">// rewrites: [ &#123; from: /.*/, to: path.join(config.dev.assetsPublicPath, '/index.html') &#125; ]</span></span><br><span class="line">    <span class="comment">// 路由配置，前后端统一</span></span><br><span class="line">    <span class="comment">// 默认 '/' 对应 index.html</span></span><br><span class="line">    rewrites: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">from</span>: <span class="regexp">/^\/test$/</span>,</span><br><span class="line">        to: <span class="string">'/test.html'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">from</span>: <span class="regexp">/.*/</span>,</span><br><span class="line">        to: <span class="string">'/404.html'</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  ......</span><br></pre></td></tr></table></figure></p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+            <a href="/tags/vue/" rel="tag">#vue</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/07/OOP-observer/" rel="next" title="观察者模式">
+                <i class="fa fa-chevron-left"></i> 观察者模式
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/10/OPP-command/" rel="prev" title="命令模式">
+                命令模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/uploads/avatar.jpg" alt="illuSioN4ng_uestc" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">illuSioN4ng_uestc</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">My left brain has nothing right, and my right brain has nothing left~</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">73</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/illuSioN4ng" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2354437155/profile?topnav=1&wvr=6" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/la413972057" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> csdn
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">Links</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://macshuo.com/" target="_blank">MacTalk</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-cli的变化"><span class="nav-number">1.</span> <span class="nav-text">vue-cli的变化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于vue-cli的多页应用配置"><span class="nav-number">2.</span> <span class="nav-text">基于vue-cli的多页应用配置</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">illuSioN4ng_uestc</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+<div class="site-visit-count">
+  <span id="busuanzi_container_site_pv">
+      本站已被浏览<span id="busuanzi_value_site_pv"></span>次
+  </span>
+</div>
+<div class="visit-count">
+  <span id="busuanzi_container_site_uv">
+      你是第<span id="busuanzi_value_site_uv"></span>个到访的小伙伴
+  </span>
+</div>
+
+
+
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+    
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'illuSioN4ng';
+      var disqus_identifier = '2018/01/08/vue-vuecli/';
+      var disqus_title = '基于vue-cli的多页配置';
+      var disqus_url = 'http://illuSioN4ng.github.io/2018/01/08/vue-vuecli/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+  
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+
+</body>
+</html>
